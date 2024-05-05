@@ -8,7 +8,7 @@ services:
     image: mariadb:10.6.17
     restart: always
     volumes:
-      - ./mariadbdata/data:/var/lib/mysql
+      - ${MARIADB_VOLUME_DATA}:/var/lib/mysql
     environment:
       - MARIADB_USER=${MARIADB_USER}
       - MARIADB_PASSWORD=${MARIADB_PASSWORD}
@@ -23,7 +23,7 @@ services:
     image: phpmyadmin:5.2.1-apache
     restart: always
     volumes:
-      - ./phpmyadmindata/data:/var/lib/mysql
+      - ${PHPMYADMIN_VOLUME_DATA}:/var/lib/mysql
     environment:
       - PMA_ARBITRARY=1
     ports:
