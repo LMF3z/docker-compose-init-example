@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  db:
+    env_file:
+      - .env
+    container_name: mariadb_database
+    image: mariadb:10.6.17
+    restart: always
+    volumes:
+      - ./mariadbdata/data:/var/lib/mysql
+    environment:
+      - MARIADB_USER=${MARIADB_USER}
+      - MARIADB_PASSWORD=${MARIADB_PASSWORD}
+      - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
+    ports:
+      - 3306:3306
+    
+  phpmyadmin:
+    depends_on:
+      - db
+
+    image: phpmyadmin:5.2.1-apache
+    restart: always
+    volumes:
+      - ./phpmyadmindata/data:/var/lib/mysql
+    environment:
+      - PMA_ARBITRARY=1
+    ports:
+      - 8080:80

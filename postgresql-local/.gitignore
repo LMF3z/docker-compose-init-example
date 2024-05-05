@@ -1,0 +1,4 @@
+postgresqldata/
+pgadmindata/
+
+.env
