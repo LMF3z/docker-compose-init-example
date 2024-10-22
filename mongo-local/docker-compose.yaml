@@ -1,0 +1,13 @@
+services:
+  db:
+    container_name: mongodblocal
+    image: mongo:8.0.1
+    restart: always
+    volumes:
+      - ${LOCAL_PATH_MONGODB_VOLUME}:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    ports:
+      - 27017:27017
+    command: ['--auth']
