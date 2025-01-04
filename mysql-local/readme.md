@@ -6,6 +6,4 @@
 
 `$ docker network create mysql-local_default` (Puede ser cualquier nombre)
 
-`$ docker network connect mysql-local_default <id_contenedor>` (Ejecutar tanto para MySQL como para MariaDB)
-
 `$ docker-compose up`
