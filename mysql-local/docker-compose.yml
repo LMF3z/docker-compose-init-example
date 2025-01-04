@@ -13,6 +13,8 @@ services:
       - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
     ports:
       - 3306:3306
+    networks:
+      - mysql-local_default
     
   phpmyadmin:
     depends_on:
@@ -26,3 +28,9 @@ services:
       - PMA_ARBITRARY=1
     ports:
       - 8080:80
+    networks:
+      - mysql-local_default
+
+networks:
+  mysql-local_default:
+    external: true
